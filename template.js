@@ -91,15 +91,24 @@ var templateEngine = {
 					var array = b.split('.');
 					var r = data;
 					var count = 0;
+
 					for(var prop in r) {
 						count++;
 					}
+
 					if(count > 0) {
 						$.each(array, function (k, v) {
 							r = r[v];
 						});
 					}
-					return typeof r === 'string' || typeof r === 'number' ? r : a;
+
+					if( typeof r === 'string' || typeof r === 'number' ) {
+						return r;
+					}else if( typeof r === 'object' ) {
+						return JSON.stringify(r);
+					} else{
+						return a;
+					}
 				}else {
 					var r = data[b];
 					return typeof r === 'string' || typeof r === 'number' ? r : a;
