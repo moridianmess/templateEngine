@@ -1,5 +1,5 @@
 var templateEngine = {
-	version: "0.4.2",
+	version: "0.4.3",
 	author: "Marc Evans (moridiweb)",
 	load: function (url, data, target, clear)	{
 		var defer = $.Deferred();
@@ -90,7 +90,11 @@ var templateEngine = {
 				if(b.indexOf('.') > -1 && b.indexOf('$') < 0 && b.indexOf(' ') < 0 && b.indexOf("\n") < 0){
 					var array = b.split('.');
 					var r = data;
-					if(r.length > 0) {
+					var count = 0;
+					for(var prop in r) {
+						count++;
+					}
+					if(count > 0) {
 						$.each(array, function (k, v) {
 							r = r[v];
 						});
