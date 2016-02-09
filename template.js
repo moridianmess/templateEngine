@@ -1,5 +1,5 @@
 var templateEngine = {
-	version: "0.4.3",
+	version: "0.4.4",
 	author: "Marc Evans (moridiweb)",
 	load: function (url, data, target, clear)	{
 		var defer = $.Deferred();
